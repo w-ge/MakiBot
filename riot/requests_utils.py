@@ -1,6 +1,6 @@
 import requests
 
-headers = {'X-Riot-Token': 'RGAPI-24004a94-55e4-4beb-8ad6-b3e3ee59b640'}
+headers = {'X-Riot-Token': 'RGAPI-beb1da84-f516-417b-89a0-5f7c7a23e6a5'}
 
 async def get_summoner_info(summoner_name):
     r = requests.get('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summoner_name, headers = headers)
@@ -16,12 +16,12 @@ async def get_previous_match_id(account):
 async def get_match_data(match_id, account_id):
     r = requests.get('https://na1.api.riotgames.com/lol/match/v4/matches/' + str(match_id), headers = headers)
     r = r.json()
+
+    game_mode = r['gameMode']
     participants = r['participants']
-    participantIdentities = r['participantIdentities']
-    participant_id = find_participant_id(participantIdentities, account_id)
-    return  participants[participant_id - 1]
-
-
+    participant_identities = r['participantIdentities']
+    participant_id = find_participant_id(participant_identities, account_id)
+    return  game_mode, participants[participant_id - 1]
 
 def find_participant_id(participantIdentities, account_id):
     for participant in participantIdentities:
