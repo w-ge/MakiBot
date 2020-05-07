@@ -1,6 +1,6 @@
 import requests
 
-headers = {'X-Riot-Token': 'RGAPI-beb1da84-f516-417b-89a0-5f7c7a23e6a5'}
+headers = {'X-Riot-Token': 'RGAPI-ec0baa62-dbf9-4bea-a9ff-83e356ab6a06'}
 
 async def get_summoner_info(summoner_name):
     r = requests.get('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summoner_name, headers = headers)
