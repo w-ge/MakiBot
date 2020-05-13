@@ -15,7 +15,8 @@ from utils import (
     displayPreviousGame,
     displayChampion,
     get_user_champion,
-    attack
+    attack,
+    import_key
 )
 
 client = commands.Bot(command_prefix = '$')
@@ -115,4 +116,4 @@ async def on_ready():
     print("Ready")
 
 if __name__ == '__main__':
-    client.run('Njg0MjU1NDEwNTcxNTc1Mzk2.Xl3cog.XoB59c0ZkJJhkcuBr9AlO4RA9bY')
+    client.run(import_key())

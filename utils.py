@@ -27,6 +27,12 @@ with open(w_dir + '\data\\' + version + '\champion.json', encoding="utf8") as f:
     champions = json.load(f)
     champions = champions['data']
 
+def import_key():
+    with open(w_dir + '\data\\bot_key.txt') as f:
+        bot_key = f.read()
+    return bot_key
+
+
 async def attack(ctx, turn_order, attacker, defender):
     damage = max(turn_order[attacker]['atk'] - turn_order[defender]['def'], minimum_damage)
     turn_order[defender]['hp'] -= damage

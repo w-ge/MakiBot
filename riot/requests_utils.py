@@ -1,6 +1,10 @@
 import requests
+import os
 
-headers = {'X-Riot-Token': ''}
+with open(os.getcwd() + '\\riot\\riot_key.txt') as f:
+    riot_key = f.read()
+
+headers = {'X-Riot-Token': riot_key}
 
 async def get_summoner_info(summoner_name):
     r = requests.get('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summoner_name, headers = headers)
