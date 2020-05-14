@@ -34,14 +34,16 @@ def import_key():
 
 
 async def attack(ctx, turn_order, attacker, defender):
-    damage = max(turn_order[attacker]['atk'] - turn_order[defender]['def'], minimum_damage)
+    damage = max(turn_order[attacker]['atk'] - turn_order[defender]['def'], minimum_damage) + random.randint(lck_damage_min, lck_damage_max)
     turn_order[defender]['hp'] -= damage
-    await ctx.send("{}'s {} deals {} damage to {}'s {}".format(
+    await ctx.send("{}'s {} deals {} damage to {}'s {}. {} has {} hp left".format(
         turn_order[attacker]['owner'],
         turn_order[attacker]['champ'],
-        damage + random.randint(lck_damage_min, lck_damage_max),
+        damage,
         turn_order[defender]['owner'],
-        turn_order[defender]['champ']
+        turn_order[defender]['champ'],
+        turn_order[defender]['champ'],
+        turn_order[defender]['hp']
     ))
 
 def merge_tags(champion_data):
