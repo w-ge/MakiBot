@@ -1,8 +1,9 @@
 import requests
 import os
+from dotenv import load_dotenv
 
-with open(os.getcwd() + '\\riot\\riot_key.txt') as f:
-    riot_key = f.read()
+load_dotenv()
+riot_key = os.getenv("RIOT_KEY")
 
 headers = {'X-Riot-Token': riot_key}
 

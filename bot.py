@@ -6,6 +6,8 @@ import asyncio
 import os
 import copy
 import typing
+from dotenv import load_dotenv
+
 
 from utils import (
     discord_users,
@@ -128,4 +130,5 @@ async def on_ready():
     print("Ready")
 
 if __name__ == '__main__':
+    load_dotenv()
     client.run(import_key())

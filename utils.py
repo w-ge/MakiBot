@@ -28,9 +28,7 @@ with open(w_dir + '\data\\' + version + '\champion.json', encoding="utf8") as f:
     champions = champions['data']
 
 def import_key():
-    with open(w_dir + '\data\\bot_key.txt') as f:
-        bot_key = f.read()
-    return bot_key
+    return os.getenv("BOT_KEY")
 
 
 async def attack(ctx, turn_order, attacker, defender):
